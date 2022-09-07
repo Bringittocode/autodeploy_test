@@ -1,0 +1,5 @@
+---
+deployment:
+  tasks:
+    - export DEPLOPATH=/home/bringitt/autodeploy/
+    - cp track.md $DEPLOYPATH
