@@ -17,6 +17,5 @@ jobs:
         server: bringittocode.org
         username: ${{ secrets.FTP_USER }}
         password: ${{ secrets.FTP_PASSWORD }}
-        local-dir: | 
-          track.md
-          .cpanel.yml
+        exclude: |
+          dont.md
