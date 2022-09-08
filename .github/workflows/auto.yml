@@ -14,4 +14,4 @@ jobs:
       with:
         user: ${{ secrets.FTP_USER }}
         password: ${{ secrets.FTP_PASSWORD }}
-        server: bringittocode.org
+        host: bringittocode.org
