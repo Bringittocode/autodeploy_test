@@ -2,16 +2,21 @@ on:
   push:
     branches: [ "main" ]
 
-name: Deploy via ftp
+name: 🚀 Deploy website on push
 jobs:
-  deploy:
-    name: Deploy
+  web-deploy:
+    name: 🎉 Deploy
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - name: Upload ftp
-      uses: sebastianpopp/ftp-action@releases/v2
+    - name: 🚚 Get latest code
+      uses: actions/checkout@v2
+
+    - name: 📂 Sync files
+      uses: SamKirkland/FTP-Deploy-Action@4.3.2
       with:
-        user: ${{ secrets.FTP_USER }}
+        server: bringittocode.org
+        username: ${{ secrets.FTP_USER }}
         password: ${{ secrets.FTP_PASSWORD }}
-        host: bringittocode.org
+        local-dir: | 
+          track.md
+          .cpanel.yml
