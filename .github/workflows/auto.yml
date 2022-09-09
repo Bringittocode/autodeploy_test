@@ -4,12 +4,37 @@ on:
 
 name: 🚀 Deploy website on push
 jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clone repository
+        uses: actions/checkout@v3
+
+      - name: Use Node.js 16.x
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Generate build
+        run: npm run build
+
+      # Share artifact inside workflow
+      # - name: Share artifact inside workflow
+      #   uses: actions/upload-artifact@v1
+      #   with:
+      #     name: react-github-actions-build
+          # path: build
+
   web-deploy:
     name: 🎉 Deploy
     runs-on: ubuntu-latest
     steps:
     - name: 🚚 Get latest code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
     - name: 📂 Sync files
       uses: SamKirkland/FTP-Deploy-Action@4.3.2
@@ -19,5 +44,12 @@ jobs:
         password: ${{ secrets.FTP_PASSWORD }}
         exclude: |
           dont.md
-          **/.github*
-          **/.github*/**
+          **/node_modules/**
+          **/.github/**
+          **/.git/**
+          pages
+          styles
+          postcss.config
+          README.md
+          .gitignore
+          .eslintrc.json
