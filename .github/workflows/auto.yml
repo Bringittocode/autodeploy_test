@@ -46,7 +46,7 @@ jobs:
                     **/.github/**
                     **/.git/**
                     **/pages/**
-                    styles
+                    **/styles/**
                     postcss.config.js
                     README.md
                     .gitignore
