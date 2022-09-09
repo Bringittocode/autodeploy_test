@@ -25,6 +25,12 @@ jobs:
             - name: Generate build
               run: npm run build
 
+            - name: Upload .next folder
+              uses: actions/upload-artifact@v3
+              with:
+                name: dot_next_folder
+                path: .next/ # or path/to/artifact
+
     web-deploy:
         name: 🎉 Deploy
         runs-on: ubuntu-latest
@@ -48,6 +54,7 @@ jobs:
                     **/pages/**
                     **/styles/**
                     postcss.config.js
+                    tailwind.config.js
                     README.md
                     .gitignore
                     .eslintrc.json
