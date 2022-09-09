@@ -19,4 +19,5 @@ jobs:
         password: ${{ secrets.FTP_PASSWORD }}
         exclude: |
           dont.md
-          .github
+          **/.github*
+          **/.github*/**
